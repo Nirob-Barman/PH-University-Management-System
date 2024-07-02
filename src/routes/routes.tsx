@@ -8,7 +8,10 @@ import Contact from "../pages/Contact";
 // import CreateStudent from "../pages/admin/CreateStudent";
 // import CreateFaculty from "../pages/admin/CreateFaculty";
 // import CreateAdmin from "../pages/admin/CreateAdmin";
-import { adminPaths } from "./admin.routes";
+import {
+    // adminPaths,
+    adminRoutes
+} from "./admin.routes";
 
 const router = createBrowserRouter([
   {
@@ -51,17 +54,20 @@ const router = createBrowserRouter([
     //     element: <CreateAdmin />,
     //   },
     // ],
-    children: adminPaths,
+    // children: adminPaths,
+    children: adminRoutes,
   },
   {
     path: "/faculty",
     element: <App />,
-    children: adminPaths,
+    // children: adminPaths,
+    children: adminRoutes,
   },
   {
     path: "/student",
     element: <App />,
-    children: adminPaths,
+    // children: adminPaths,
+    children: adminRoutes,
   },
   {
     path: "/login",

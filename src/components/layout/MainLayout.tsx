@@ -1,45 +1,52 @@
-import { Layout, Menu, MenuProps } from "antd";
-import { NavLink, Outlet } from "react-router-dom";
+import {
+  Layout, Menu,
+  // MenuProps
+} from "antd";
+import {
+  // NavLink,
+  Outlet
+} from "react-router-dom";
+import { adminSidebarItems } from "../../routes/admin.routes";
 
 const { Header, Content, Footer, Sider } = Layout;
 
-const items: MenuProps["items"] = [
-  {
-    // key: "1",
-    key: "DashBoard",
-    // label: "DashBoard",
-    label: <NavLink to="/admin/dashboard">Dashboard</NavLink>,
-  },
-  // {
-  //   key: "2",
-  //   label: "Profile",
-  // },
-  {
-    // key: "3",
-    key: "User Management",
-    label: "User Management",
-    children: [
-      {
-        // key: "31",
-        key: "Create Admin",
-        // label: "Create Admin",
-        label: <NavLink to="/admin/create-admin">Create Admin</NavLink>,
-      },
-      {
-        // key: "32",
-        key: "Create Student",
-        // label: "Create Student",
-        label: <NavLink to="/admin/create-student">Create Student</NavLink>,
-      },
-      {
-        // key: "32",
-        key: "Create Faculty",
-        // label: "Create Faculty",
-        label: <NavLink to="/admin/create-faculty">Create Faculty</NavLink>,
-      },
-    ],
-  },
-];
+// const items: MenuProps["items"] = [
+//   {
+//     // key: "1",
+//     key: "DashBoard",
+//     // label: "DashBoard",
+//     label: <NavLink to="/admin/dashboard">Dashboard</NavLink>,
+//   },
+//   // {
+//   //   key: "2",
+//   //   label: "Profile",
+//   // },
+//   {
+//     // key: "3",
+//     key: "User Management",
+//     label: "User Management",
+//     children: [
+//       {
+//         // key: "31",
+//         key: "Create Admin",
+//         // label: "Create Admin",
+//         label: <NavLink to="/admin/create-admin">Create Admin</NavLink>,
+//       },
+//       {
+//         // key: "32",
+//         key: "Create Student",
+//         // label: "Create Student",
+//         label: <NavLink to="/admin/create-student">Create Student</NavLink>,
+//       },
+//       {
+//         // key: "32",
+//         key: "Create Faculty",
+//         // label: "Create Faculty",
+//         label: <NavLink to="/admin/create-faculty">Create Faculty</NavLink>,
+//       },
+//     ],
+//   },
+// ];
 
 const MainLayout = () => {
   return (
@@ -70,7 +77,8 @@ const MainLayout = () => {
           theme="dark"
           mode="inline"
           defaultSelectedKeys={["4"]}
-          items={items}
+          // items={items}
+          items={adminSidebarItems}
         />
       </Sider>
       <Layout>
