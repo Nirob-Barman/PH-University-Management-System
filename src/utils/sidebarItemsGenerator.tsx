@@ -1,6 +1,22 @@
 import { NavLink } from "react-router-dom";
 import { TSidebarItem, TUserPath } from "../types";
 
+// import { ReactNode } from "react";
+
+// type TSidebarItem = {
+//   key: string;
+//   label: ReactNode;
+//   children?: TSidebarItem[];
+// };
+
+// type TUserPath = {
+//   name: string;
+//   path?: string;
+//   element?: ReactNode;
+//   children?: TUserPath[];
+// };
+
+
 export const sidebarItemsGenerator = (items: TUserPath[], role) => {
   const sidebarItems = items.reduce((acc: TSidebarItem[], item) => {
     if (item.path && item.name) {

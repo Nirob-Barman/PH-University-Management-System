@@ -1,14 +1,22 @@
 import {
-  Layout, Menu,
+  Layout,
+  // Menu,
   // MenuProps
 } from "antd";
 import {
   // NavLink,
   Outlet
 } from "react-router-dom";
-import { adminSidebarItems } from "../../routes/admin.routes";
+// import {
+//   adminPaths,
+//   // adminSidebarItems
+// } from "../../routes/admin.routes";
+// import { sidebarItemsGenerator } from "../../utils/sidebarItemsGenerator";
+import Sidebar from "./Sidebar";
 
-const { Header, Content, Footer, Sider } = Layout;
+const { Header, Content, Footer,
+  // Sider
+} = Layout;
 
 // const items: MenuProps["items"] = [
 //   {
@@ -51,7 +59,8 @@ const { Header, Content, Footer, Sider } = Layout;
 const MainLayout = () => {
   return (
     <Layout style={{ height: "100vh" }}>
-      <Sider
+
+      {/* <Sider
         breakpoint="lg"
         collapsedWidth="0"
         onBreakpoint={(broken) => {
@@ -78,9 +87,13 @@ const MainLayout = () => {
           mode="inline"
           defaultSelectedKeys={["4"]}
           // items={items}
-          items={adminSidebarItems}
+          // items={adminSidebarItems}
+          items={sidebarItemsGenerator(adminPaths, "admin")}
         />
-      </Sider>
+      </Sider> */}
+
+      <Sidebar/>
+
       <Layout>
         <Header style={{ padding: 0 }} />
         <Content style={{ margin: "24px 16px 0" }}>
