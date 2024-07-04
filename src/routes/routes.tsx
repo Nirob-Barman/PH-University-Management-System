@@ -10,8 +10,10 @@ import Contact from "../pages/Contact";
 // import CreateAdmin from "../pages/admin/CreateAdmin";
 import {
     // adminPaths,
-    adminRoutes
+    // adminRoutes
+    adminPaths,
 } from "./admin.routes";
+import { routeGenerator } from "../utils/routesGenerator";
 
 const router = createBrowserRouter([
   {
@@ -55,19 +57,22 @@ const router = createBrowserRouter([
     //   },
     // ],
     // children: adminPaths,
-    children: adminRoutes,
+    // children: adminRoutes,
+    children: routeGenerator(adminPaths),
   },
   {
     path: "/faculty",
     element: <App />,
     // children: adminPaths,
-    children: adminRoutes,
+    // children: adminRoutes,
+    children: routeGenerator(adminPaths),
   },
   {
     path: "/student",
     element: <App />,
     // children: adminPaths,
-    children: adminRoutes,
+    // children: adminRoutes,
+    children: routeGenerator(adminPaths),
   },
   {
     path: "/login",
