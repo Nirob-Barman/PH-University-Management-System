@@ -9,14 +9,13 @@ import Contact from "../pages/Contact";
 // import CreateFaculty from "../pages/admin/CreateFaculty";
 // import CreateAdmin from "../pages/admin/CreateAdmin";
 import {
-    // adminPaths,
-    // adminRoutes
-    adminPaths,
+  // adminPaths,
+  // adminRoutes
+  adminPaths,
 } from "./admin.routes";
 import { routeGenerator } from "../utils/routesGenerator";
 import { facultyPaths } from "./faculty.routes";
 import { studentPaths } from "./student.routes";
-
 const router = createBrowserRouter([
   {
     path: "/",

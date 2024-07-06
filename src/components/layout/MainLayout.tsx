@@ -1,11 +1,12 @@
 import {
+  Button,
   Layout,
   // Menu,
   // MenuProps
 } from "antd";
 import {
   // NavLink,
-  Outlet
+  Outlet,
 } from "react-router-dom";
 // import {
 //   adminPaths,
@@ -13,8 +14,13 @@ import {
 // } from "../../routes/admin.routes";
 // import { sidebarItemsGenerator } from "../../utils/sidebarItemsGenerator";
 import Sidebar from "./Sidebar";
+import { useAppDispatch } from "../../redux/hooks";
+import { logout } from "../../redux/features/auth/authSlice";
 
-const { Header, Content, Footer,
+const {
+  Header,
+  Content,
+  Footer,
   // Sider
 } = Layout;
 
@@ -57,9 +63,14 @@ const { Header, Content, Footer,
 // ];
 
 const MainLayout = () => {
+
+  const dispatch = useAppDispatch();
+
+  const handleLogout = () => {
+    dispatch(logout());
+  };
   return (
     <Layout style={{ height: "100vh" }}>
-
       {/* <Sider
         breakpoint="lg"
         collapsedWidth="0"
@@ -92,10 +103,13 @@ const MainLayout = () => {
         />
       </Sider> */}
 
-      <Sidebar/>
+      <Sidebar />
 
       <Layout>
-        <Header style={{ padding: 0 }} />
+        {/* <Header style={{ padding: 0 }} /> */}
+        <Header>
+          <Button onClick={handleLogout}></Button>
+        </Header>
         <Content style={{ margin: "24px 16px 0" }}>
           <div
             style={{
@@ -104,7 +118,7 @@ const MainLayout = () => {
             }}
           >
             <h1>PH University Management app</h1>
-            <Outlet/>
+            <Outlet />
           </div>
         </Content>
         <Footer style={{ textAlign: "center" }}>
