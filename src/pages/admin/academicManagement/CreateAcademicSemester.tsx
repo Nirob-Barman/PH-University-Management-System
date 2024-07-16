@@ -3,17 +3,22 @@ import PHForm from "../../../components/form/PHForm";
 // import PHInput from "../../../components/form/PHInput";
 import { Button, Col, Flex } from "antd";
 import PHSelect from "../../../components/form/PHSelect";
+import { monthOptions } from "../../../constants/global";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+import { semesterOptions } from "../../../constants/semester";
 
-const nameOptions = [
-  {
-    value: "01",
-    label: "Autumn",
-  },
-  {
-    value: "02",
-    label: "Summer",
-  },
-];
+// const nameOptions = [
+//   {
+//     value: "01",
+//     label: "Autumn",
+//   },
+//   {
+//     value: "02",
+//     label: "Summer",
+//   },
+// ];
+
 // const codeOptions = [
 //   {
 //     value: "01",
@@ -37,9 +42,10 @@ const yearOptions = [0, 1, 2, 3, 4].map((number) => ({
 const CreateAcademicSemester = () => {
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     // console.log(data);
-    console.log(data.name);
-
-    const name = nameOptions[Number(data.name) -1].label;
+    // console.log(data.name);
+    
+    // const name = nameOptions[Number(data.name) - 1].label;
+    const name = semesterOptions[Number(data.name) - 1].label;
 
     const semesterData = {
       // name: "Something",
@@ -47,32 +53,44 @@ const CreateAcademicSemester = () => {
       // name,
       // code: "Something",
       // code: data.name,
-        name,
-        code: data.name,
-        year: data.year,
-      //   startMonth: data.startMonth,
-      //   endMonth: data.endMonth,
+      name,
+      code: data.name,
+      year: data.year,
+      startMonth: data.startMonth,
+      endMonth: data.endMonth,
     };
 
     console.log(semesterData);
   };
 
+   const academicSemesterSchema = z.object({
+    name: z.string({ required_error: "Please select a Name" }),
+    year: z.string({ required_error: "Please select a Year" }),
+    startMonth: z.string({ required_error: "Please select a Start Month" }),
+    endMonth: z.string({ required_error: "Please select a End Month" }),
+  });
+
   return (
     <Flex justify="center" align="center">
       <Col span={6}>
-        <PHForm onSubmit={onSubmit}>
+        <PHForm
+          onSubmit={onSubmit}
+          resolver={zodResolver(academicSemesterSchema)}
+        >
           {/* <PHInput type="text" name="name" label="name" /> */}
           {/* <PHInput type="text" name="name" label="year" /> */}
-          <PHSelect name="name" label="name" options={nameOptions} />
+          {/* <PHSelect label="Name" name="name" options={nameOptions} /> */}
+          <PHSelect label="Name" name="name" options={semesterOptions} />
           {/* <PHSelect name="code" label="code" options={codeOptions} /> */}
           {/* <PHSelect name="name" label="name" options={[{ value: "1", label: "1" }]} /> */}
-          <PHSelect name="Year" label="year" options={yearOptions} />
+          <PHSelect label="Year" name="year" options={yearOptions} />
           <PHSelect
-            name="Start month"
-            label="startMonth"
-            options={nameOptions}
+            label="Start Month"
+            name="startMonth"
+            options={monthOptions}
           />
-          <PHSelect name="End month" label="endMonth" options={nameOptions} />
+          <PHSelect label="End Month" name="endMonth" options={monthOptions} />
+
           <Button htmlType="submit">Submit</Button>
         </PHForm>
       </Col>
