@@ -16,11 +16,11 @@ const academicSemesterApi = baseApi.injectEndpoints({
         // params.append('name', 'Fall')
         // params.append('name', args)
 
-        // if (args) {
-        //   args.forEach((item: TQueryParam) => {
-        //     params.append(item.name, item.value as string);
-        //   });
-        // }
+        if (args) {
+          args.forEach((item: TQueryParam) => {
+            params.append(item.name, item.value as string);
+          });
+        }
 
         return {
           url: "/academic-semesters",
