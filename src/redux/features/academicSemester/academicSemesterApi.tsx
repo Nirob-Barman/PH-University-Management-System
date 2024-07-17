@@ -1,5 +1,5 @@
+import { TResponseRedux } from "../../../types";
 import { TAcademicSemester } from "../../../types/academicManagement.type";
-import { TResponseRedux } from "../../../types/global";
 import { baseApi } from "../../api/baseApi";
 
 const academicSemesterApi = baseApi.injectEndpoints({
