@@ -6,9 +6,10 @@ import PHSelect from "../../../components/form/PHSelect";
 import { bloodGroupOptions, genderOptions } from "../../../constants/global";
 import PHDatePicker from "../../../components/form/PHDatePicker";
 import {useGetAcademicDepartmentsQuery, useGetAllSemestersQuery } from "../../../redux/features/admin/academicManagement.api";
+import { useAddStudentMutation } from "../../../redux/features/admin/userManagement.api";
 
 const studentDummyData = {
-  password: "student123",
+  password: "@bul.123",
   student: {
     name: {
       firstName: "I am ",
@@ -56,7 +57,7 @@ const studentDefaultValues = {
   },
   gender: "male",
 
-  bloogGroup: "A+",
+  bloodGroup: "A+",
 
   contactNo: "1235678",
   emergencyContactNo: "987-654-3210",
@@ -84,15 +85,17 @@ const studentDefaultValues = {
 };
 
 const CreateStudent = () => {
-  // const [addStudent, { data, error }] = useAddStudentMutation();
-
-  // console.log({ data, error });
+  const [addStudent, { data, error }] = useAddStudentMutation();
+  console.log({ data, error });
 
   const { data: sData, isLoading: sIsLoading } = useGetAllSemestersQuery(undefined);
   // console.log(sData);
 
-  const { data: dData, isLoading: dIsLoading } =
-    useGetAcademicDepartmentsQuery(undefined);
+  const { data: dData, isLoading: dIsLoading } = useGetAcademicDepartmentsQuery(
+    undefined,
+    // {skip: true},
+    // { skip: sIsLoading }
+  );
   // console.log(dData);
 
   const semesterOptions = sData?.data?.map((item) => ({
@@ -122,9 +125,9 @@ const CreateStudent = () => {
     // console.log(Object.fromEntries(formData));
 
     formData.append("data", JSON.stringify(studentData));
-    formData.append("file", data.image);
+    // formData.append("file", data.image);
 
-    // // addStudent(formData);
+    addStudent(formData);
 
     //! This is for development
     //! Just for checking
@@ -159,7 +162,7 @@ const CreateStudent = () => {
                 label="Blood group"
               />
             </Col>
-            {/* <Col span={24} md={{ span: 12 }} lg={{ span: 8 }}>
+            <Col span={24} md={{ span: 12 }} lg={{ span: 8 }}>
               <Controller
                 name="image"
                 render={({ field: { onChange, value, ...field } }) => (
@@ -173,7 +176,7 @@ const CreateStudent = () => {
                   </Form.Item>
                 )}
               />
-            </Col> */}
+            </Col>
           </Row>
           <Divider>Contact Info.</Divider>
           <Row gutter={8}>
