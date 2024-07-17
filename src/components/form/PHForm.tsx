@@ -36,11 +36,17 @@ const PHForm = ({
   // const { handleSubmit} = useForm();
   const methods = useForm();
 
+  const submit: SubmitHandler<FieldValues> = (data) => {
+    onSubmit(data);
+    methods.reset();
+  };
+
   return (
     <FormProvider {...methods}>
       {/* <form onSubmit={methodshandleSubmit(onSubmit)}>{children}</form>; */}
       {/* <form onSubmit={methods.handleSubmit(onSubmit)}>{children}</form>; */}
-      <Form layout="vertical" onFinish={methods.handleSubmit(onSubmit)}>
+      {/* <Form layout="vertical" onFinish={methods.handleSubmit(onSubmit)}> */}
+      <Form layout="vertical" onFinish={methods.handleSubmit(submit)}>
         {children}
       </Form>
     </FormProvider>
