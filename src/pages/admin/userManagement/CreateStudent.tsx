@@ -125,7 +125,7 @@ const CreateStudent = () => {
     // console.log(Object.fromEntries(formData));
 
     formData.append("data", JSON.stringify(studentData));
-    // formData.append("file", data.image);
+    formData.append("file", data.image);
 
     addStudent(formData);
 
