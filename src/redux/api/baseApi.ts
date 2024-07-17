@@ -33,8 +33,8 @@ const baseQueryWithRefreshToken: BaseQueryFn<
     // console.log(result);
 
     if (result?.error?.status === 404) {
-        toast.error("User Not Found");
-        // toast.error(result?.error?.data?.message);
+        // toast.error("User Not Found");
+        toast.error(result?.error?.data?.message);
     }
 
     if (result?.error?.status === 401) {
