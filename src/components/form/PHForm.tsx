@@ -32,7 +32,6 @@ const PHForm = ({
   if (resolver) {
     formConfig["resolver"] = resolver;
   }
-
   // const { handleSubmit} = useForm();
   const methods = useForm();
 
