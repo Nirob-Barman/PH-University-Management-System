@@ -1,7 +1,10 @@
 import { FieldValues, SubmitHandler } from "react-hook-form";
 import PHForm from "../../../components/form/PHForm";
 import PHInput from "../../../components/form/PHInput";
-import { Button, Col, Row } from "antd";
+import { Button, Col, Divider, Row } from "antd";
+import PHSelect from "../../../components/form/PHSelect";
+import { bloodGroupOptions, genderOptions } from "../../../constants/global";
+import PHDatePicker from "../../../components/form/PHDatePicker";
 
 const studentDummyData = {
   password: "student123",
@@ -108,7 +111,31 @@ const CreateStudent = () => {
     <Row justify="center">
       <Col span={24}>
         <PHForm onSubmit={onSubmit} defaultValues={studentDefaultValues}>
-          <PHInput type="text" name="name.firstName" label="First Name" />
+          <Divider>Personal Info.</Divider>
+          <Row gutter={8}>
+            <Col span={24} md={{ span: 12 }} lg={{ span: 8 }}>
+              <PHInput type="text" name="name.firstName" label="First Name" />
+            </Col>
+            <Col span={24} md={{ span: 12 }} lg={{ span: 8 }}>
+              <PHInput type="text" name="name.middleName" label="Middle Name" />
+            </Col>
+            <Col span={24} md={{ span: 12 }} lg={{ span: 8 }}>
+              <PHInput type="text" name="name.lastName" label="Last Name" />
+            </Col>
+            <Col span={24} md={{ span: 12 }} lg={{ span: 8 }}>
+              <PHSelect options={genderOptions} name="gender" label="Gender" />
+            </Col>
+            <Col span={24} md={{ span: 12 }} lg={{ span: 8 }}>
+              <PHDatePicker name="dateOfBirth" label="Date of birth" />
+            </Col>
+            <Col span={24} md={{ span: 12 }} lg={{ span: 8 }}>
+              <PHSelect
+                options={bloodGroupOptions}
+                name="bloodGroup"
+                label="Blood group"
+              />
+            </Col>
+          </Row>
           <Button htmlType="submit">Submit</Button>
         </PHForm>
       </Col>
