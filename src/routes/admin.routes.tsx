@@ -9,6 +9,7 @@ import AdminDashboard from "../pages/admin/AdminDashboard";
 import CreateAdmin from "../pages/admin/userManagement/CreateAdmin";
 import CreateFaculty from "../pages/admin/userManagement/CreateFaculty";
 import CreateStudent from "../pages/admin/userManagement/CreateStudent";
+import StudentData from "../pages/admin/userManagement/StudentData";
 import StudentDetails from "../pages/admin/userManagement/StudentDetails";
 // import { NavLink } from "react-router-dom";
 
@@ -73,7 +74,11 @@ export const adminPaths = [
         element: <CreateStudent />,
       },
       {
-        name: "Student Details",
+        name: "Students",
+        path: "students-data",
+        element: <StudentData />,
+      },
+      {
         path: "student-data/:studentId",
         element: <StudentDetails />,
       },
